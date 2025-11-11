@@ -1,0 +1,190 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String   @id @default(cuid())
+  email       String   @unique
+  name        String?
+  password    String
+  phone       String?
+  address     String?
+  role        Role     @default(USER)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  orders      Order[]
+  cartItems   CartItem[]
+}
+
+model Category {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String?
+  image       String?
+  slug        String   @unique
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  products    Product[]
+}
+
+model Product {
+  id            String   @id @default(cuid())
+  name          String
+  description   String?  // Uzun ürün açıklaması
+  shortDesc     String?  // Kısa ürün açıklaması
+  price         Float
+  image         String?
+  images        String?  // JSON string array of additional images
+  stock         Int      @default(0)
+  sku           String   @unique
+  categoryId    String
+  isOrganic     Boolean  @default(true)
+  isFeatured    Boolean  @default(false)
+  isActive      Boolean  @default(true)
+  
+  // Besin değerleri
+  calories      Int?     // kcal per 100g
+  protein       Float?   // g per 100g
+  carbs         Float?   // g per 100g
+  fat           Float?   // g per 100g
+  fiber         Float?   // g per 100g
+  sugar         Float?   // g per 100g
+  sodium        Float?   // mg per 100g
+  
+  // Saklama koşulları
+  storageConditions String? // Saklama koşulları metni
+  shelfLife         String? // Raf ömrü
+  storageTemp       String? // Saklama sıcaklığı
+  
+  // Ek bilgiler
+  origin       String?  // Menşei
+  allergens    String?  // Alerjen bilgileri
+  ingredients  String?  // İçindekiler
+  
+  // Besin değerlendirmesi
+  nutritionalEvaluation NutritionalEvaluation?
+  
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  category     Category @relation(fields: [categoryId], references: [id])
+  orderItems   OrderItem[]
+  cartItems    CartItem[]
+}
+
+model Order {
+  id        String      @id @default(cuid())
+  userId    String
+  status    OrderStatus @default(PENDING)
+  total     Float
+  address   String?
+  phone     String?
+  notes     String?
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  user      User        @relation(fields: [userId], references: [id])
+  items     OrderItem[]
+}
+
+model OrderItem {
+  id        String @id @default(cuid())
+  orderId   String
+  productId String
+  quantity  Int
+  price     Float
+  order     Order   @relation(fields: [orderId], references: [id])
+  product   Product @relation(fields: [productId], references: [id])
+}
+
+model CartItem {
+  id        String @id @default(cuid())
+  userId    String
+  productId String
+  quantity  Int
+  user      User    @relation(fields: [userId], references: [id])
+  product   Product @relation(fields: [productId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, productId])
+}
+
+model ModalSettings {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  imageUrl    String?
+  isActive    Boolean  @default(true)
+  discount    Float?   // İndirim yüzdesi
+  buttonText  String?  // Buton metni
+  buttonLink  String?  // Buton linki
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model NutritionalEvaluation {
+  id                String   @id @default(cuid())
+  productId         String   @unique
+  healthScore       Int      @default(0)      // 0-100 sağlık skoru
+  vitaminScore      Int      @default(0)      // Vitamin skoru
+  mineralScore      Int      @default(0)      // Mineral skoru
+  proteinScore      Int      @default(0)      // Protein skoru
+  fiberScore        Int      @default(0)      // Lif skoru
+  sugarScore        Int      @default(0)      // Şeker skoru (düşük olması iyi)
+  sodiumScore       Int      @default(0)      // Sodyum skoru (düşük olması iyi)
+  
+  // Değerlendirme metinleri
+  healthBenefits    String?  // Sağlık faydaları
+  recommendedFor    String?  // Önerilen durumlar
+  warnings          String?  // Uyarılar
+  dailyValueInfo    String?  // Günlük değer bilgileri
+  
+  // AI tarafından oluşturulan analiz
+  aiAnalysis        String?  // AI analiz metni
+  aiConfidence      Float?   // AI güven skoru 0-1
+  lastAnalyzedAt    DateTime @default(now())
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  product           Product  @relation(fields: [productId], references: [id])
+}
+
+model CampaignModal {
+  id              String   @id @default(cuid())
+  title           String
+  description     String?
+  imageUrl        String?
+  isActive        Boolean  @default(true)
+  discount        Float?   // İndirim yüzdesi
+  buttonText      String?  // Buton metni
+  buttonLink      String?  // Buton linki
+  startDate       DateTime? // Başlangıç tarihi
+  endDate         DateTime? // Bitiş tarihi
+  targetAudience  String   @default("all") // all, new, returning
+  priority        Int      @default(1) // 1-10 öncelik sırası
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}

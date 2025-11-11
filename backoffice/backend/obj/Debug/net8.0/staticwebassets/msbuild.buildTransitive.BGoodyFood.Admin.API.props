@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/BGoodyFood.Admin.API.props" />
+</Project>
