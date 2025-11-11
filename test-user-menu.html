@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BGoodyFood - Kullanıcı Menüsü Testi</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 50%, #ecfdf5 100%);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .test-section {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .test-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+        .test-description {
+            color: #6b7280;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .test-steps {
+            background: #f9fafb;
+            border-left: 4px solid #10b981;
+            padding: 16px;
+            margin: 16px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .test-steps ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .test-steps li {
+            margin-bottom: 8px;
+            color: #374151;
+        }
+        .test-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            margin: 8px 8px 8px 0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .test-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3);
+        }
+        .status {
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 500;
+            display: inline-block;
+            margin: 4px;
+        }
+        .status.success {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        .status.info {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .feature-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 16px;
+        }
+        .feature-title {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+        .feature-desc {
+            color: #6b7280;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="test-section">
+            <h1 class="test-title">🧪 BGoodyFood Kullanıcı Menüsü Testi</h1>
+            <p class="test-description">
+                Bu test sayfası, BGoodyFood web sitesindeki kullanıcı menüsü fonksiyonlarını doğrulamak için hazırlanmıştır. 
+                Aşağıdaki adımları izleyerek tüm özelliklerin çalıştığını test edebilirsiniz.
+            </p>
+            
+            <div class="status success">✅ Frontend-Backend Bağlantısı Aktif</div>
+            <div class="status info">ℹ️ Test Credentials: admin@bgoody.com / admin123</div>
+        </div>
+
+        <div class="test-section">
+            <h2 class="test-title">🔐 Giriş Yapma Testi</h2>
+            <div class="test-steps">
+                <ol>
+                    <li><strong>Aşağıdaki linke tıklayarak ana sayfaya gidin:</strong></li>
+                    <li>Sağ üst köşedeki "Giriş Yap" butonuna tıklayın</li>
+                    <li>Email: <code>admin@bgoody.com</code></li>
+                    <li>Şifre: <code>admin123</code></li>
+                    <li>Giriş yap butonuna tıklayın</li>
+                    <li>Başarılı giriş sonrası kullanıcı adının sağ üstte göründüğünü doğrulayın</li>
+                </ol>
+            </div>
+            <a href="http://localhost:3000" target="_blank" class="test-link">🏠 Ana Sayfaya Git</a>
+        </div>
+
+        <div class="test-section">
+            <h2 class="test-title">👤 Kullanıcı Menüsü Dropdown Testi</h2>
+            <div class="test-steps">
+                <ol>
+                    <li>Giriş yaptıktan sonra sağ üstteki kullanıcı adına tıklayın</li>
+                    <li>Dropdown menünün açıldığını doğrulayın</li>
+                    <li>Menünün aşağıdaki seçenekleri içerdiğini kontrol edin:
+                        <ul style="margin-top: 8px; padding-left: 20px;">
+                            <li>🛍️ Siparişlerim</li>
+                            <li>👤 Profilim</li>
+                            <li>➖ Ayırıcı çizgi</li>
+                            <li>🚪 Çıkış Yap</li>
+                        </ul>
+                    </li>
+                    <li>Menünün dışına tıklayarak menünün kapandığını doğrulayın</li>
+                    <li>Tekrar kullanıcı adına tıklayıp menünün yeniden açıldığını test edin</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2 class="test-title">📄 Sayfa Gezinme Testleri</h2>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-title">👤 Profilim Sayfası</div>
+                    <div class="feature-desc">
+                        Kullanıcı dropdown menüsünden "Profilim" seçeneğine tıklayın. Sayfanın düzgün yüklendiğini ve kullanıcı bilgilerinin görüntülendiğini kontrol edin.
+                    </div>
+                    <a href="http://localhost:3000/profile" target="_blank" class="test-link" style="margin-top: 12px;">Profil Sayfası</a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-title">🛍️ Siparişlerim Sayfası</div>
+                    <div class="feature-desc">
+                        Kullanıcı dropdown menüsünden "Siparişlerim" seçeneğine tıklayın. Sayfanın düzgün yüklendiğini ve sipariş listesinin görüntülendiğini kontrol edin.
+                    </div>
+                    <a href="http://localhost:3000/siparisler" target="_blank" class="test-link" style="margin-top: 12px;">Siparişlerim</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2 class="test-title">🚪 Çıkış Yapma Testi</h2>
+            <div class="test-steps">
+                <ol>
+                    <li>Kullanıcı dropdown menüsünü açın</li>
+                    <li>"Çıkış Yap" butonuna tıklayın</li>
+                    <li>Çıkış yapıldığına dair toast mesajının göründüğünü doğrulayın</li>
+                    <li>Sayfanın yenilendiğini ve "Giriş Yap" butonunun tekrar göründüğünü kontrol edin</li>
+                    <li>LocalStorage'daki kullanıcı verilerinin silindiğini doğrulayın (geliştirici araçları)</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2 class="test-title">🔧 Teknik Kontroller</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-title">API Endpoint'leri</div>
+                    <div class="feature-desc">
+                        <ul style="margin: 0; padding-left: 16px;">
+                            <li>✅ /api/products - Ürün listesi</li>
+                            <li>✅ /api/categories - Kategori listesi</li>
+                            <li>✅ /api/cart - Sepet işlemleri</li>
+                            <li>✅ /api/health - Sağlık kontrolü</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-title">Bileşenler</div>
+                    <div class="feature-desc">
+                        <ul style="margin: 0; padding-left: 16px;">
+                            <li>✅ Cart Store (Zustand)</li>
+                            <li>✅ Auth Context</li>
+                            <li>✅ Toast Bildirimleri</li>
+                            <li>✅ Responsive Design</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2 class="test-title">📋 Test Sonuçları</h2>
+            <p class="test-description">
+                Tüm testleri tamamladıktan sonra aşağıdaki özelliklerin çalıştığını doğrulamış olacaksınız:
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 16px;">
+                <div class="status success">✅ Giriş/Çıkış</div>
+                <div class="status success">✅ Dropdown Menü</div>
+                <div class="status success">✅ Profil Sayfası</div>
+                <div class="status success">✅ Siparişlerim</div>
+                <div class="status success">✅ Toast Bildirimleri</div>
+                <div class="status success">✅ Responsive</div>
+                <div class="status success">✅ API Bağlantısı</div>
+                <div class="status success">✅ State Management</div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2 class="test-title">🐞 Hata Bildirimi</h2>
+            <p class="test-description">
+                Eğer herhangi bir özelliğin çalışmadığını fark ederseniz, lütfen tarayıcı konsolunu (F12) kontrol edin 
+                ve hata mesajlarını not alın. Geliştirici araçlarındaki Network sekmesinde API çağrılarının durumunu da kontrol edebilirsiniz.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

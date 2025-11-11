@@ -1,0 +1,13 @@
+ ⚠ Port 3000 is in use, using available port 3005 instead.
+   ▲ Next.js 15.3.5
+   - Local:        http://localhost:3005
+   - Network:      http://21.0.2.121:3005
+   - Environments: .env
+
+ ✓ Starting...
+ ✓ Ready in 1899ms
+ ○ Compiling / ...
+ ✓ Compiled / in 8.3s (964 modules)
+ GET / 200 in 9154ms
+ GET / 200 in 9180ms
+[?25h

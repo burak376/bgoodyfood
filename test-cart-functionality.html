@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sepet Testi</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        button { padding: 10px 20px; margin: 10px; background: #10b981; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #059669; }
+        .result { margin: 10px 0; padding: 10px; background: #f3f4f6; border-radius: 5px; }
+        .success { background: #d1fae5; color: #065f46; }
+        .error { background: #fee2e2; color: #991b1b; }
+    </style>
+</head>
+<body>
+    <h1>🛒 Sepet Fonksiyonu Testi</h1>
+    
+    <div>
+        <h2>1. Ana Sayfa Testi</h2>
+        <button onclick="testMainPage()">Ana Sayfayı Aç</button>
+        <div id="mainPageResult" class="result"></div>
+    </div>
+
+    <div>
+        <h2>2. Sepet Testi</h2>
+        <button onclick="testCartAPI()">Sepeti Kontrol Et</button>
+        <button onclick="testAddToCart()">Ürün Ekle</button>
+        <div id="cartResult" class="result"></div>
+    </div>
+
+    <div>
+        <h2>3. Test Sayfası</h2>
+        <button onclick="openTestPage()">Test Sayfasını Aç</button>
+        <div id="testPageResult" class="result"></div>
+    </div>
+
+    <div>
+        <h2>4. Manuel Test Linkleri</h2>
+        <ul>
+            <li><a href="http://localhost:3000" target="_blank">Ana Sayfa</a></li>
+            <li><a href="http://localhost:3000/test-cart" target="_blank">Sepet Test Sayfası</a></li>
+            <li><a href="http://localhost:3000/api/cart" target="_blank">Cart API</a></li>
+        </ul>
+    </div>
+
+    <script>
+        async function testMainPage() {
+            const result = document.getElementById('mainPageResult');
+            try {
+                const response = await fetch('http://localhost:3000');
+                result.innerHTML = `<span class="success">✅ Ana Sayfa Çalışıyor (Status: ${response.status})</span>`;
+                result.className = 'result success';
+            } catch (error) {
+                result.innerHTML = `<span class="error">❌ Hata: ${error.message}</span>`;
+                result.className = 'result error';
+            }
+        }
+
+        async function testCartAPI() {
+            const result = document.getElementById('cartResult');
+            try {
+                const response = await fetch('http://localhost:3000/api/cart');
+                const data = await response.json();
+                result.innerHTML = `<span class="success">✅ Sepet API Çalışıyor: ${JSON.stringify(data).substring(0, 100)}...</span>`;
+                result.className = 'result success';
+            } catch (error) {
+                result.innerHTML = `<span class="error">❌ Hata: ${error.message}</span>`;
+                result.className = 'result error';
+            }
+        }
+
+        async function testAddToCart() {
+            const result = document.getElementById('cartResult');
+            try {
+                const response = await fetch('http://localhost:3000/api/products');
+                const productsData = await response.json();
+                const firstProduct = productsData.products[0];
+                
+                if (firstProduct) {
+                    const addResponse = await fetch('http://localhost:3000/api/cart', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            productId: firstProduct.id,
+                            quantity: 1
+                        })
+                    });
+                    
+                    const addData = await addResponse.json();
+                    
+                    if (addResponse.ok) {
+                        result.innerHTML = `<span class="success">✅ Ürün Eklendi: ${firstProduct.name}</span>`;
+                        result.className = 'result success';
+                    } else {
+                        result.innerHTML = `<span class="error">❌ Ürün Eklenemedi: ${addData.error}</span>`;
+                        result.className = 'result error';
+                    }
+                } else {
+                    result.innerHTML = `<span class="error">❌ Ürün bulunamadı</span>`;
+                    result.className = 'result error';
+                }
+            } catch (error) {
+                result.innerHTML = `<span class="error">❌ Hata: ${error.message}</span>`;
+                result.className = 'result error';
+            }
+        }
+
+        function openTestPage() {
+            const result = document.getElementById('testPageResult');
+            window.open('http://localhost:3000/test-cart', '_blank');
+            result.innerHTML = `<span class="success">✅ Test Sayfası Yeni Sekmede Açıldı</span>`;
+            result.className = 'result success';
+        }
+
+        // Otomatik test
+        window.onload = function() {
+            testMainPage();
+            testCartAPI();
+        };
+    </script>
+</body>
+</html>

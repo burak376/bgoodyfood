@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Logout</title>
+</head>
+<body>
+    <h1>Çıkış Yap Testi</h1>
+    <p>1. Önce siteye gidin: <a href="http://localhost:3000" target="_blank">http://localhost:3000</a></p>
+    <p>2. Giriş yapın (admin@bgoody.com / admin123)</p>
+    <p>3. Çıkış yap butonuna tıklayın</p>
+    <p>4. "Çıkış yapıldı!" alert'i görmelisiniz</p>
+    
+    <h2>LocalStorage Kontrolü:</h2>
+    <button onclick="checkStorage()">Storage Kontrol Et</button>
+    <div id="result"></div>
+    
+    <script>
+        function checkStorage() {
+            const token = localStorage.getItem('authToken');
+            const user = localStorage.getItem('user');
+            document.getElementById('result').innerHTML = `
+                <p>Token: ${token || 'Yok'}</p>
+                <p>User: ${user || 'Yok'}</p>
+            `;
+        }
+        
+        // Auto check every 2 seconds
+        setInterval(checkStorage, 2000);
+        checkStorage();
+    </script>
+</body>
+</html>
