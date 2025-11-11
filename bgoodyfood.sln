@@ -1,0 +1,35 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BGoodyFood.API", "backend\BGoodyFood.API.csproj", "{1EF71D28-DA19-B35D-D6EF-4F46601C1A1A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backoffice", "backoffice", "{5632E92D-A3D7-46A4-7845-C4EBF6EAC8CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BGoodyFood.Admin.API", "backoffice\backend\BGoodyFood.Admin.API.csproj", "{57663FEE-2A7F-017B-33AA-3D29E8C6DA6B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1EF71D28-DA19-B35D-D6EF-4F46601C1A1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EF71D28-DA19-B35D-D6EF-4F46601C1A1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EF71D28-DA19-B35D-D6EF-4F46601C1A1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EF71D28-DA19-B35D-D6EF-4F46601C1A1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57663FEE-2A7F-017B-33AA-3D29E8C6DA6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57663FEE-2A7F-017B-33AA-3D29E8C6DA6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57663FEE-2A7F-017B-33AA-3D29E8C6DA6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57663FEE-2A7F-017B-33AA-3D29E8C6DA6B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{57663FEE-2A7F-017B-33AA-3D29E8C6DA6B} = {5632E92D-A3D7-46A4-7845-C4EBF6EAC8CC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {04E9655D-7B71-4713-A490-9208811FBAB4}
+	EndGlobalSection
+EndGlobal

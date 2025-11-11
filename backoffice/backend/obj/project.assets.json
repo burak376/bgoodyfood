@@ -3952,24 +3952,31 @@
     ]
   },
   "packageFolders": {
-    "/home/z/.nuget/packages/": {}
+    "C:\\Users\\burak\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/z/my-project/backoffice/backend/BGoodyFood.Admin.API.csproj",
+      "projectUniqueName": "D:\\projects\\bgoodyfood\\backoffice\\backend\\BGoodyFood.Admin.API.csproj",
       "projectName": "BGoodyFood.Admin.API",
-      "projectPath": "/home/z/my-project/backoffice/backend/BGoodyFood.Admin.API.csproj",
-      "packagesPath": "/home/z/.nuget/packages/",
-      "outputPath": "/home/z/my-project/backoffice/backend/obj/",
+      "projectPath": "D:\\projects\\bgoodyfood\\backoffice\\backend\\BGoodyFood.Admin.API.csproj",
+      "packagesPath": "C:\\Users\\burak\\.nuget\\packages\\",
+      "outputPath": "D:\\projects\\bgoodyfood\\backoffice\\backend\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "/home/z/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\burak\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -3987,7 +3994,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net8.0": {
@@ -4035,7 +4043,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/home/z/.dotnet/sdk/8.0.414/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
