@@ -56,18 +56,18 @@ export default function AdminOrders() {
       // Try to load from .NET API first
       try {
         const apiOrders = await adminApi.getOrders();
-        setOrders(apiOrders);
-        setFilteredOrders(apiOrders);
+        setOrders(apiOrders as Order[]);
+        setFilteredOrders(apiOrders as Order[]);
         setApiConnected(true);
         console.log('✅ Orders loaded from .NET API');
       } catch (apiError) {
         console.log('⚠️ .NET API not available, using fallback data');
-        
+
         // Fallback to existing API endpoints
         const response = await fetch('/api/admin/orders');
         if (response.ok) {
           const data = await response.json();
-          const localOrders = data.orders || [];
+          const localOrders = (data.orders || []) as Order[];
           setOrders(localOrders);
           setFilteredOrders(localOrders);
         }
