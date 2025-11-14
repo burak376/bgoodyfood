@@ -6,14 +6,14 @@ Bu proje **backend (.NET)** ve **frontend (React)** olarak ayrı klasörlerde or
 
 ```
 bgoodyfood/
-├── backend/              # .NET 8 Web API (C#)
+├── backend/              # .NET 8 Web API - Müşteri API (Port: 5000)
 │   ├── Controllers/      # API endpoint'leri
 │   ├── Models/          # Veritabanı modelleri
 │   ├── Services/        # İş mantığı
 │   ├── Data/            # DbContext ve migration'lar
 │   └── Program.cs       # Uygulama başlangıcı
 │
-├── frontend/            # React + Vite (TypeScript)
+├── frontend/            # React + Vite - Müşteri Arayüzü (Port: 5173)
 │   ├── src/
 │   │   ├── components/  # React bileşenleri
 │   │   ├── pages/       # Sayfa componentleri
@@ -22,7 +22,17 @@ bgoodyfood/
 │   │   └── lib/         # Yardımcı fonksiyonlar
 │   └── public/          # Statik dosyalar
 │
-└── backoffice/          # Admin paneli (opsiyonel)
+└── backoffice/          # Admin Paneli (Bağımsız Uygulama)
+    ├── backend/         # .NET 8 Web API - Admin API (Port: 5001)
+    │   ├── Controllers/ # Admin endpoint'leri
+    │   ├── Models/      # Admin modelleri
+    │   └── Data/        # Admin DbContext
+    └── frontend/        # React - Admin UI (Port: 3000)
+        ├── src/
+        │   ├── components/ # Admin bileşenleri
+        │   ├── contexts/   # Auth context
+        │   └── pages/      # Admin sayfaları
+        └── package.json
 ```
 
 ## Teknolojiler
@@ -90,6 +100,25 @@ npm run dev
 ```
 
 Frontend şu adreste çalışacak: `http://localhost:5173`
+
+## Backoffice (Admin Paneli)
+
+Backoffice bağımsız bir uygulamadır. Detaylı bilgi için: `backoffice/KURULUM.md`
+
+**Hızlı Başlangıç:**
+```bash
+# Terminal 1
+cd backoffice
+./start-backend.sh
+
+# Terminal 2
+cd backoffice
+./start-frontend.sh
+```
+
+- Admin Panel: http://localhost:3000
+- Admin API: http://localhost:5001/swagger
+- Giriş: admin / admin123
 
 ## Kullanım
 

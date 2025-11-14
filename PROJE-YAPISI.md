@@ -7,21 +7,31 @@ Projeniz **backend** ve **frontend** olarak tamamen ayrılmış durumda.
 ```
 bgoodyfood/
 │
-├── backend/              (.NET 8 - C# ile yazılmış)
+├── backend/              (.NET 8 - Müşteri API - Port: 5000)
 │   ├── Controllers/      API endpoint'leri
 │   ├── Models/          Veritabanı modelleri
 │   ├── Services/        İş mantığı
 │   ├── Data/            DbContext
 │   └── Program.cs       Ana dosya
 │
-├── frontend/            (React + TypeScript)
+├── frontend/            (React + Vite - Müşteri UI - Port: 5173)
 │   ├── src/
 │   │   ├── components/  UI bileşenleri
 │   │   ├── pages/       Sayfalar
 │   │   └── lib/         Yardımcı fonksiyonlar
 │   └── public/          Statik dosyalar
 │
-└── backoffice/          (Admin paneli - opsiyonel)
+└── backoffice/          (Admin Paneli - Bağımsız Uygulama)
+    ├── backend/         (.NET 8 - Admin API - Port: 5001)
+    │   ├── Controllers/ Admin endpoint'leri
+    │   ├── Models/      Admin modelleri
+    │   └── Data/        Admin DbContext
+    └── frontend/        (React - Admin UI - Port: 3000)
+        ├── src/
+        │   ├── components/ Admin bileşenleri
+        │   ├── pages/      Admin sayfaları
+        │   └── contexts/   Auth context
+        └── package.json
 ```
 
 ## Sizin İçin Önemli Noktalar
@@ -68,6 +78,8 @@ npm run dev
 ## Hızlı Başlangıç
 
 ### 1. İlk Kurulum
+
+**Ana Proje:**
 ```bash
 # Backend
 cd backend
@@ -75,6 +87,17 @@ dotnet restore
 
 # Frontend
 cd frontend
+npm install
+```
+
+**Backoffice (Admin Paneli):**
+```bash
+# Backend
+cd backoffice/backend
+dotnet restore
+
+# Frontend
+cd backoffice/frontend
 npm install
 ```
 
@@ -91,6 +114,9 @@ dotnet ef database update
 ```
 
 ### 4. Çalıştırma
+
+**Ana Proje (Müşteri Tarafı):**
+
 İki terminal açın:
 
 **Terminal 1:**
@@ -100,6 +126,22 @@ dotnet ef database update
 
 **Terminal 2:**
 ```bash
+./start-frontend.sh
+```
+
+**Backoffice (Admin Paneli):**
+
+İki terminal daha açın:
+
+**Terminal 3:**
+```bash
+cd backoffice
+./start-backend.sh
+```
+
+**Terminal 4:**
+```bash
+cd backoffice
 ./start-frontend.sh
 ```
 
@@ -142,10 +184,18 @@ Siz çoğunlukla **backend** tarafında çalışacaksınız:
 
 ## Dosyalar
 
+**Ana Proje:**
 - `README.md` - Genel bilgiler
 - `GELISTIRME-KILAVUZU.md` - Detaylı geliştirme rehberi
+- `PROJE-YAPISI.md` - Bu dosya
 - `start-backend.sh` - Backend başlatma script'i
 - `start-frontend.sh` - Frontend başlatma script'i
+
+**Backoffice:**
+- `backoffice/README.md` - Backoffice genel bilgi
+- `backoffice/KURULUM.md` - Backoffice detaylı kurulum
+- `backoffice/start-backend.sh` - Admin backend başlatma
+- `backoffice/start-frontend.sh` - Admin frontend başlatma
 
 ## Sorular?
 
@@ -167,5 +217,19 @@ Genellikle HAYIR. Backend API'leri yazarsanız, frontend onları otomatik kullan
 ### "Veritabanı şifremi nasıl bulurum?"
 Supabase Dashboard > Settings > Database > Connection string
 
+## URL'ler ve Portlar
+
+| Uygulama | URL | Port | Kullanım |
+|----------|-----|------|----------|
+| Müşteri Frontend | http://localhost:5173 | 5173 | E-ticaret sitesi |
+| Müşteri Backend | http://localhost:5000 | 5000 | Müşteri API |
+| Müşteri Swagger | http://localhost:5000/swagger | 5000 | API Dokümantasyonu |
+| Admin Frontend | http://localhost:3000 | 3000 | Admin paneli |
+| Admin Backend | http://localhost:5001 | 5001 | Admin API |
+| Admin Swagger | http://localhost:5001/swagger | 5001 | Admin API Dokümantasyonu |
+
 ## Önemli
-Projeniz artık tamamen **.NET backend** ile çalışıyor. React frontend sadece UI için, siz backend'de C# ile rahatça çalışabilirsiniz!
+- Projeniz **2 ayrı uygulama**: Ana site + Admin paneli
+- Her ikisi de **.NET backend + React frontend**
+- Her ikisi de **Supabase PostgreSQL** kullanır
+- Siz backend'de C# ile rahatça çalışabilirsiniz!
