@@ -56,7 +56,7 @@ backoffice/
 
 ### Backend (.NET 8.0)
 - **Framework**: ASP.NET Core Web API
-- **Database**: SQLite with Entity Framework Core
+- **Database**: PostgreSQL (Supabase) with Entity Framework Core
 - **Authentication**: JWT Bearer Authentication
 - **Documentation**: Swagger/OpenAPI
 - **Architecture**: Clean Architecture with Repository Pattern
@@ -83,17 +83,31 @@ backoffice/
 cd backend
 ```
 
-2. Restore dependencies:
+2. Update Supabase connection string in `appsettings.json`:
+```json
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Host=db.aotmfmixngkuglekhzbw.supabase.co;Database=postgres;Username=postgres;Password=YOUR_PASSWORD;Port=5432;SSL Mode=Require;Trust Server Certificate=true"
+  }
+}
+```
+
+3. Restore dependencies:
 ```bash
 dotnet restore
 ```
 
-3. Run the application:
+4. Run database migrations:
+```bash
+dotnet ef database update
+```
+
+5. Run the application:
 ```bash
 dotnet run --urls="http://localhost:5000"
 ```
 
-4. Access Swagger documentation:
+6. Access Swagger documentation:
 ```
 http://localhost:5000/swagger
 ```
@@ -190,7 +204,7 @@ The application automatically seeds with:
 ```json
 {
   "ConnectionStrings": {
-    "DefaultConnection": "Data Source=admin.db"
+    "DefaultConnection": "Host=db.aotmfmixngkuglekhzbw.supabase.co;Database=postgres;Username=postgres;Password=YOUR_PASSWORD;Port=5432;SSL Mode=Require;Trust Server Certificate=true"
   },
   "JwtSettings": {
     "SecretKey": "your-secret-key",
@@ -200,6 +214,8 @@ The application automatically seeds with:
   }
 }
 ```
+
+**Note:** Get your Supabase password from Supabase Dashboard > Settings > Database
 
 ### Frontend Configuration
 - API base URL: `http://localhost:5000`
