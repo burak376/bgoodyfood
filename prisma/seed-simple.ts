@@ -74,7 +74,7 @@ async function main() {
 
   console.log('✅ Categories created')
 
-  // Create products with detailed nutritional info
+  // Create products with nutritional info
   const products = [
     // MEYVELER
     {
@@ -89,7 +89,6 @@ async function main() {
       isOrganic: true,
       isFeatured: true,
       isActive: true,
-      unit: 'kg',
       origin: 'Isparta, Türkiye',
       calories: 52,
       protein: 0.3,
@@ -107,7 +106,7 @@ async function main() {
     {
       name: 'Organik Portakal',
       shortDesc: 'C vitamini deposu',
-      description: 'Akdeniz güneşinin bereketli topraklarında yetişen organik portakallarımız, doğal tatları ve yüksek C vitamini içerikleriyle sağlığınıza katkı sağlar. Her sabah taze sıkılmış portakal suyunun tadını çıkarın.',
+      description: 'Akdeniz güneşinin bereketli topraklarında yetişen organik portakallarımız, doğal tatları ve yüksek C vitamini içerikleriyle sağlığınıza katkı sağlar.',
       price: 28.90,
       image: 'https://images.pexels.com/photos/161559/background-bitter-breakfast-bright-161559.jpeg',
       stock: 120,
@@ -116,7 +115,6 @@ async function main() {
       isOrganic: true,
       isFeatured: true,
       isActive: true,
-      unit: 'kg',
       origin: 'Mersin, Türkiye',
       calories: 47,
       protein: 0.9,
@@ -124,17 +122,12 @@ async function main() {
       fat: 0.1,
       fiber: 2.4,
       sugar: 9,
-      sodium: 0,
-      ingredients: 'Organik Portakal',
-      allergens: 'Yok',
-      storageConditions: 'Oda sıcaklığında',
-      shelfLife: '1 hafta',
-      storageTemp: '18-22°C'
+      sodium: 0
     },
     {
       name: 'Organik Muz',
       shortDesc: 'Doğal enerji kaynağı',
-      description: 'Tropik iklimde yetiştirilen organik muzlar, potasyum ve magnezyum açısından zengin. Sporcuların ve aktif yaşam süren herkesin enerji deposu. Organik sertifikalı, hiçbir kimyasal ilaç kullanılmadan yetiştirilmiştir.',
+      description: 'Tropik iklimde yetiştirilen organik muzlar, potasyum ve magnezyum açısından zengin. Sporcuların ve aktif yaşam süren herkesin enerji deposu.',
       price: 42.90,
       image: 'https://images.pexels.com/photos/2872755/pexels-photo-2872755.jpeg',
       stock: 90,
@@ -143,7 +136,6 @@ async function main() {
       isOrganic: true,
       isFeatured: false,
       isActive: true,
-      unit: 'kg',
       origin: 'Ekvador',
       calories: 89,
       protein: 1.1,
@@ -151,14 +143,12 @@ async function main() {
       fat: 0.3,
       fiber: 2.6,
       sugar: 12,
-      sodium: 1,
-      ingredients: 'Organik Muz',
-      allergens: 'Yok'
+      sodium: 1
     },
     {
       name: 'Organik Çilek',
       shortDesc: 'Tatlı ve sulu organik çilek',
-      description: 'Bahçemizde özenle yetiştirilen organik çileklerimiz, aroması ve tatlılığıyla damak tadınızı şenlendirecek. Vitamin C açısından zengin, antioksidan kaynağı.',
+      description: 'Bahçemizde özenle yetiştirilen organik çileklerimiz, aroması ve tatlılığıyla damak tadınızı şenlendirecek. Vitamin C açısından zengin.',
       price: 55.00,
       image: 'https://images.pexels.com/photos/1295572/pexels-photo-1295572.jpeg',
       stock: 40,
@@ -167,7 +157,6 @@ async function main() {
       isOrganic: true,
       isFeatured: true,
       isActive: true,
-      unit: 'kg',
       origin: 'Bursa, Türkiye',
       calories: 32,
       protein: 0.7,
@@ -180,7 +169,7 @@ async function main() {
     {
       name: 'Organik Üzüm',
       shortDesc: 'Çekirdeksiz tatlı üzüm',
-      description: 'Bağlarımızda doğal yöntemlerle yetiştirilen çekirdeksiz organik üzümler. Siyah üzüm çeşidi, antioksidan rezervuarı resveratrol açısından zengin.',
+      description: 'Bağlarımızda doğal yöntemlerle yetiştirilen çekirdeksiz organik üzümler. Antioksidan rezervuarı resveratrol açısından zengin.',
       price: 38.50,
       image: 'https://images.pexels.com/photos/708777/pexels-photo-708777.jpeg',
       stock: 65,
@@ -189,7 +178,6 @@ async function main() {
       isOrganic: true,
       isFeatured: false,
       isActive: true,
-      unit: 'kg',
       origin: 'Manisa, Türkiye',
       calories: 69,
       protein: 0.7,
@@ -204,7 +192,7 @@ async function main() {
     {
       name: 'Organik Domates',
       shortDesc: 'Taze sera domatesi',
-      description: 'Serada yetiştirilen doğal domatesler, hiçbir hormon kullanılmadan. Likopen açısından zengin, kalp sağlığına katkı sağlar. Salatalarda ve yemeklerde vazgeçilmez lezzet.',
+      description: 'Serada yetiştirilen doğal domatesler, hiçbir hormon kullanılmadan. Likopen açısından zengin, kalp sağlığına katkı sağlar.',
       price: 18.90,
       image: 'https://images.pexels.com/photos/1327838/pexels-photo-1327838.jpeg',
       stock: 200,
@@ -213,7 +201,6 @@ async function main() {
       isOrganic: true,
       isFeatured: true,
       isActive: true,
-      unit: 'kg',
       origin: 'Antalya, Türkiye',
       calories: 18,
       protein: 0.9,
@@ -221,15 +208,12 @@ async function main() {
       fat: 0.2,
       fiber: 1.2,
       sugar: 2.6,
-      sodium: 5,
-      ingredients: 'Organik Domates',
-      storageConditions: 'Serin yerde saklayın',
-      shelfLife: '5 gün'
+      sodium: 5
     },
     {
       name: 'Organik Salatalık',
       shortDesc: 'Gevrek taze salatalık',
-      description: 'Taze ve gevrek organik salatalıklar, sağlıklı beslenmenin vazgeçilmezi. %95 su içeriği ile doğal hidratasyon kaynağı. Vitamin K ve antioksidanlar açısından zengin.',
+      description: 'Taze ve gevrek organik salatalıklar, sağlıklı beslenmenin vazgeçilmezi. %95 su içeriği ile doğal hidratasyon kaynağı.',
       price: 15.90,
       image: 'https://images.pexels.com/photos/2329440/pexels-photo-2329440.jpeg',
       stock: 150,
@@ -238,7 +222,6 @@ async function main() {
       isOrganic: true,
       isFeatured: false,
       isActive: true,
-      unit: 'kg',
       origin: 'Muğla, Türkiye',
       calories: 16,
       protein: 0.7,
@@ -251,7 +234,7 @@ async function main() {
     {
       name: 'Organik Havuç',
       shortDesc: 'Beta karoten deposu',
-      description: 'Toprak altında doğal olarak büyüyen organik havuçlarımız, A vitamini ve beta karoten açısından zengin. Göz sağlığına katkı sağlar, çiğ veya pişmiş olarak tüketilebilir.',
+      description: 'Toprak altında doğal olarak büyüyen organik havuçlarımız, A vitamini ve beta karoten açısından zengin. Göz sağlığına katkı sağlar.',
       price: 22.50,
       image: 'https://images.pexels.com/photos/3650647/pexels-photo-3650647.jpeg',
       stock: 130,
@@ -260,7 +243,6 @@ async function main() {
       isOrganic: true,
       isFeatured: true,
       isActive: true,
-      unit: 'kg',
       origin: 'Konya, Türkiye',
       calories: 41,
       protein: 0.9,
@@ -282,7 +264,6 @@ async function main() {
       isOrganic: true,
       isFeatured: false,
       isActive: true,
-      unit: 'demet',
       origin: 'İzmir, Türkiye',
       calories: 23,
       protein: 2.9,
@@ -304,7 +285,6 @@ async function main() {
       isOrganic: true,
       isFeatured: false,
       isActive: true,
-      unit: 'kg',
       origin: 'Adana, Türkiye',
       calories: 25,
       protein: 1,
@@ -319,7 +299,7 @@ async function main() {
     {
       name: 'Organik Nohut',
       shortDesc: 'Protein deposu bakliyat',
-      description: 'Doğal yöntemlerle yetiştirilen organik nohut, protein ve lif kaynağı. Humus, pilav veya çorba yapımında kullanılabilir. Vegan beslenmenin protein kaynağı.',
+      description: 'Doğal yöntemlerle yetiştirilen organik nohut, protein ve lif kaynağı. Humus, pilav veya çorba yapımında kullanılabilir.',
       price: 45.00,
       image: 'https://images.pexels.com/photos/4198170/pexels-photo-4198170.jpeg',
       stock: 200,
@@ -328,7 +308,6 @@ async function main() {
       isOrganic: true,
       isFeatured: true,
       isActive: true,
-      unit: 'kg',
       origin: 'Karaman, Türkiye',
       calories: 364,
       protein: 19,
@@ -336,15 +315,12 @@ async function main() {
       fat: 6,
       fiber: 17,
       sugar: 11,
-      sodium: 24,
-      ingredients: 'Organik Nohut',
-      storageConditions: 'Kuru ve serin yerde',
-      shelfLife: '1 yıl'
+      sodium: 24
     },
     {
       name: 'Organik Kırmızı Mercimek',
       shortDesc: 'Lezzetli ve sağlıklı',
-      description: 'Sağlıklı organik mercimek, demir ve protein açısından zengin. 15 dakikada pişen, pratik ve besleyici çorba yapmak için ideal. Folat ve lif deposu.',
+      description: 'Sağlıklı organik mercimek, demir ve protein açısından zengin. 15 dakikada pişen, pratik ve besleyici çorba yapmak için ideal.',
       price: 38.00,
       image: 'https://images.pexels.com/photos/4198390/pexels-photo-4198390.jpeg',
       stock: 180,
@@ -353,7 +329,6 @@ async function main() {
       isOrganic: true,
       isFeatured: true,
       isActive: true,
-      unit: 'kg',
       origin: 'Şanlıurfa, Türkiye',
       calories: 352,
       protein: 24,
@@ -375,7 +350,6 @@ async function main() {
       isOrganic: true,
       isFeatured: false,
       isActive: true,
-      unit: 'kg',
       origin: 'Kastamonu, Türkiye',
       calories: 333,
       protein: 23,
@@ -390,7 +364,7 @@ async function main() {
     {
       name: 'Organik Süt',
       shortDesc: 'Günlük taze süt',
-      description: 'Serbest gezen ineklerden günlük sağım taze süt, hiçbir katkı maddesi içermez. Pastörize, homogenize. Kalsiyum ve D vitamini ile zenginleştirilmiş.',
+      description: 'Serbest gezen ineklerden günlük sağım taze süt, hiçbir katkı maddesi içermez. Pastörize, homogenize.',
       price: 28.90,
       image: 'https://images.pexels.com/photos/6542652/pexels-photo-6542652.jpeg',
       stock: 80,
@@ -399,7 +373,6 @@ async function main() {
       isOrganic: true,
       isFeatured: true,
       isActive: true,
-      unit: 'litre',
       origin: 'Bolu, Türkiye',
       calories: 61,
       protein: 3.2,
@@ -407,15 +380,12 @@ async function main() {
       fat: 3.3,
       fiber: 0,
       sugar: 5,
-      sodium: 44,
-      storageConditions: 'Buzdolabında saklayın',
-      shelfLife: '7 gün',
-      storageTemp: '2-4°C'
+      sodium: 44
     },
     {
       name: 'Organik Yoğurt',
       shortDesc: 'Probiyotik deposu',
-      description: 'Doğal fermantasyon ile üretilen organik yoğurt, probiyotik kaynağı. Sindirim sistemine iyi gelir, bağırsık florası için ideal. Katkısız ve lezzetli.',
+      description: 'Doğal fermantasyon ile üretilen organik yoğurt, probiyotik kaynağı. Sindirim sistemine iyi gelir, bağırsak florası için ideal.',
       price: 42.90,
       image: 'https://images.pexels.com/photos/7758397/pexels-photo-7758397.jpeg',
       stock: 60,
@@ -424,7 +394,6 @@ async function main() {
       isOrganic: true,
       isFeatured: true,
       isActive: true,
-      unit: 'kg',
       origin: 'Afyon, Türkiye',
       calories: 61,
       protein: 3.5,
@@ -432,10 +401,7 @@ async function main() {
       fat: 3.3,
       fiber: 0,
       sugar: 4.7,
-      sodium: 46,
-      storageConditions: 'Buzdolabında saklayın',
-      shelfLife: '14 gün',
-      storageTemp: '2-6°C'
+      sodium: 46
     },
     {
       name: 'Organik Beyaz Peynir',
@@ -449,7 +415,6 @@ async function main() {
       isOrganic: true,
       isFeatured: false,
       isActive: true,
-      unit: 'kg',
       origin: 'Kars, Türkiye',
       calories: 264,
       protein: 17,
@@ -473,7 +438,6 @@ async function main() {
       isOrganic: true,
       isFeatured: true,
       isActive: true,
-      unit: 'kg',
       origin: 'Bolu, Türkiye',
       calories: 239,
       protein: 27,
@@ -481,10 +445,7 @@ async function main() {
       fat: 14,
       fiber: 0,
       sugar: 0,
-      sodium: 82,
-      storageConditions: 'Derin dondurucuda',
-      shelfLife: '6 ay',
-      storageTemp: '-18°C'
+      sodium: 82
     },
     {
       name: 'Organik Dana Kıyma',
@@ -498,7 +459,6 @@ async function main() {
       isOrganic: true,
       isFeatured: true,
       isActive: true,
-      unit: 'kg',
       origin: 'Ankara, Türkiye',
       calories: 250,
       protein: 26,
@@ -513,7 +473,7 @@ async function main() {
     {
       name: 'Çiçek Balı',
       shortDesc: 'Doğal arı balı',
-      description: 'Doğadan arıların topladığı %100 doğal çiçek balı. Hiçbir şeker ilavesi yok. Antioksidan ve antibakteriyel özellikli, bağışıklık sistemini güçlendirir.',
+      description: 'Doğadan arıların topladığı %100 doğal çiçek balı. Hiçbir şeker ilavesi yok. Antioksidan ve antibakteriyel özellikli.',
       price: 195.00,
       image: '/products/honey.jpg',
       stock: 70,
@@ -522,7 +482,6 @@ async function main() {
       isOrganic: true,
       isFeatured: true,
       isActive: true,
-      unit: '750gr',
       origin: 'Muğla, Türkiye',
       calories: 304,
       protein: 0.3,
@@ -530,15 +489,12 @@ async function main() {
       fat: 0,
       fiber: 0.2,
       sugar: 82,
-      sodium: 4,
-      ingredients: 'Doğal Çiçek Balı',
-      storageConditions: 'Oda sıcaklığında',
-      shelfLife: '2 yıl'
+      sodium: 4
     },
     {
       name: 'Organik Vişne Reçeli',
       shortDesc: 'Şeker ilavesiz reçel',
-      description: 'Şeker ilavesiz, doğal organik vişnelerden yapılmış reçel. Sadece meyvenin kendi şekeri kullanılmıştır. Kahvaltıların sağlıklı tatlısı.',
+      description: 'Şeker ilavesiz, doğal organik vişnelerden yapılmış reçel. Sadece meyvenin kendi şekeri kullanılmıştır.',
       price: 78.00,
       image: 'https://images.pexels.com/photos/5945756/pexels-photo-5945756.jpeg',
       stock: 55,
@@ -547,7 +503,6 @@ async function main() {
       isOrganic: true,
       isFeatured: false,
       isActive: true,
-      unit: '380gr',
       origin: 'İzmir, Türkiye',
       calories: 185,
       protein: 0.5,
@@ -555,8 +510,7 @@ async function main() {
       fat: 0.2,
       fiber: 1.5,
       sugar: 42,
-      sodium: 8,
-      ingredients: 'Organik Vişne, Doğal Şeker'
+      sodium: 8
     },
     {
       name: 'Organik Çilek Reçeli',
@@ -570,7 +524,6 @@ async function main() {
       isOrganic: true,
       isFeatured: true,
       isActive: true,
-      unit: '380gr',
       origin: 'Bursa, Türkiye',
       calories: 196,
       protein: 0.4,
