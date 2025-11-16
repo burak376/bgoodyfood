@@ -5,6 +5,11 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '2mb',
+    },
+  },
   // 禁用 Next.js 热重载，由 nodemon 处理重编译
   reactStrictMode: false,
   // 配置允许的图片域名
