@@ -3,12 +3,12 @@ import { db } from '@/lib/db'
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id: addressId } = await params
     const body = await request.json()
     const { title, address, isDefault } = body
-    const addressId = params.id
 
     // Validate required fields
     if (!title || !address) {
@@ -50,10 +50,10 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const addressId = params.id
+    const { id: addressId } = await params
 
     // Get user session
     const authHeader = request.headers.get('authorization')

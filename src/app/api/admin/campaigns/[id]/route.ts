@@ -5,11 +5,12 @@ import { verifyToken } from '@/lib/auth'
 // PUT - Kampanya modalını güncelle
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id: campaignId } = await params
     const token = request.headers.get('authorization')?.replace('Bearer ', '')
-    
+
     if (!token || !verifyToken(token)) {
       return NextResponse.json(
         { error: 'Yetkisiz erişim' },
@@ -18,7 +19,6 @@ export async function PUT(
     }
 
     const data = await request.json()
-    const campaignId = params.id
 
     const campaign = await db.campaignModal.update({
       where: { id: campaignId },
@@ -51,19 +51,18 @@ export async function PUT(
 // DELETE - Kampanya modalını sil
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id: campaignId } = await params
     const token = request.headers.get('authorization')?.replace('Bearer ', '')
-    
+
     if (!token || !verifyToken(token)) {
       return NextResponse.json(
         { error: 'Yetkisiz erişim' },
         { status: 401 }
       )
     }
-
-    const campaignId = params.id
 
     await db.campaignModal.delete({ where: { id: campaignId } })
 
